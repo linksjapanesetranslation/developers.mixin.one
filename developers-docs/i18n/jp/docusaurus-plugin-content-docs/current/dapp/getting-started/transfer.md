@@ -1,13 +1,13 @@
 ---
-title: Transfer
+title: トランスファー
 ---
 
 
-## Send Transfers
+## トランスファーを送信
 
-In Mixin Network, there are two kinds of transactions we can send: regular transactions between two regular Mixin accounts (like normal users and applications) and the "raw" transaction among the raw Kernel addresses. Of course, both of them are free and instant.
+Mixin Networkでは、私たちが送ることのできるトランザクションは2種類あります。通常のMixinアカウント同士（通常のユーザーやアプリケーションなど）の通常トランザクションと、生のKernelアドレス同士の「生」トランザクションです。もちろん、どちらも無料ですぐに利用できます。
 
-The regular transactions are created by [`/transfer`](/docs/api/transfer/transfer) API. Here is a simple example in Golang:
+通常のトランザクションは [`/トランスファー`](/docs/api/transfer/transfer) API によって作成されます。以下はGolangでの簡単な例です。
 
 ```go
 type TransferInput struct {
@@ -64,28 +64,28 @@ func CreateTransfer(ctx context.Context, in *TransferInput, uid, sid, sessionKey
 }
 ```
 
-:::caution
-The field `trace_id` should be an UUID, but in most cases, using a random UUID may lead to a problem. Please read this article for more details: [Top 10 Most Common Mistakes That Mixin Developers Make](https://gitpress.io/@lyric/top-10-most-common-mistakes-that-mixin-developers-make).
+:::注意
+フィールド `trace_id` は UUID であるべきですが、ほとんどの場合、ランダムな UUID を使用すると問題が発生する可能性があります。詳しくはこちらの記事[Mixin開発者が犯す最も一般的な間違いトップ10](https://gitpress.io/@lyric/top-10-most-common-mistakes-that-mixin-developers-make) をご覧ください。
 :::
 
 
-## Handle Incoming Transactions
+## 受信トランザクションの処理
 
-We don't need to "receive" crypto actually, because the Mixin API are always expected to return the correct amount of crypto when Kernel confirms the transactions.
+Mixin APIは、Kernelがトランザクションを確認するときに正しい量の暗号資産を返却ことが常に期待されるため、実際には暗号資産を「受け取る」必要はない。
 
-However, we may need to handle the incoming transactions. For example, we may want to send notifications to the user when the transaction is received.
+しかし、受信したトランザクションを処理する必要がある場合がある。たとえば、トランザクションが受信されたときにユーザーに通知を送信したい場合があります。
 
-There are two ways to do this:
+これを行うには、2つの方法があります。
 
-1. Handle [SYSTEM_ACCOUNT_SNAPSHOT](/docs/api/messages/category#transfers) messages in message loop;
-2. [Sync all related snapshots](../guide/sync-snapshots) in a background job.
+1.  [SYSTEM_ACCOUNT_SNAPSHOT](/docs/api/messages/category#transfers) メッセージをメッセージループで処理します。
+2. バックグラウンドジョブで[関連するすべてのスナップショットを同期](../guide/sync-snapshots)を実行する。
 
-This time, we will use the first way.
+今回は、1の方法を使用します。
 
 <!-- @TODO -->
 ...
 
-The first condition is that the category of messages. The second is that the comparison of message.UserID and the bot's clientID (the Client ID is the userID of the bot, you can see it in the keystore file).
+最初の条件は、メッセージのカテゴリです。2つ目は、message.UserIDとbotのclientIDの比較です（Client IDはbotのユーザIDで、キーストアファイルで確認できます）。
 
 ```go
 // @TODO an example
@@ -101,7 +101,7 @@ if msg.Category == mixin.MessageCategorySystemAccountSnapshot {
 } else if ...
 ```
 
-The reason for the second condition is that in Mixin Messenger, all transfers related this bot will be received in the messaging loop, no matter it comes from other person or sent by the bot itself. So we compare the message's userID and ignore the transfer sent by the bot.
+2つ目の条件の理由は、Mixin Messengerでは、このボットに関連するすべての送受信は、それが他人からのものであっても、ボット自身が送信したものであっても、メッセージングループで受信されるからです。そこで、メッセージのuserIDを比較し、botが送信した転送を無視するようにしています。
 
 <!-- @TODO -->
 ...
