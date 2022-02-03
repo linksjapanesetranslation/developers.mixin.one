@@ -1,41 +1,41 @@
 ---
-title: Exchange
+title: 取引
 sidebar_position: 11
 ---
 
-# Exchange
+# 取引
 
-The next-generation high-performance decentralized on-chain exchange based on the MTG feature high performance, low latency, asset isolation, multi-signature co-management, on-chain transactions checkable and traceable, instant maker orders, zero gas fee for transactions.
+MTGを基盤とした次世代の高性能分散型オンチェーン取引所は、高性能、低遅延、資産の分離、マルチシグネチャによる共同管理、オンチェーン取引のチェックとトラッキングが可能、即時メーカーオーダー、取引時のガス代がゼロなどの特徴を備えています。
 
-### Advantages
+### 優位性
 
-- Decentralization with Security
+- 分散化とセキュリティ
   
-  Protected by Mixin mainnet, maker order assets and wallet assets are independent of each other to reduce concentration risks. Assets under custody are well protected through the cold and hot wallet isolation and co-managed by up to 255 party multi-signature. The matching engine can be deployed on 255 node servers.
+  Mixinメインネットに保護され、メーカーオーダー資産とウォレット資産が独立しているため、資産集中のリスクが軽減されます。コールドウォレットとホットウォレットの分離や最大255名のマルチシグネチャによる共同管理により、預かり資産は十分に保護されています。マッチングエンジンは255台のノードサーバーに搭載可能です。
 
-- Openness and transparency
+- 透明性
   
-  The code is completely open-source and audited by a third-party organization. Transactions are recorded on-chain and kept checkable and traceable.
+  コードは完全にオープンソースで、第三者機関により監査されています。取引はオンチェーンで記録され、チェックと追跡が可能な状態に保たれてます。
 
-- High performance
+- 高性能
   
-  The decentralized matching engine can be deployed on high-performance node servers to provide users with low-latency and efficient transaction services.
+  分散型マッチングエンジンは、高性能なノードサーバーに配置することで、ユーザーに低遅延かつ効率的な取引サービスを提供することができます。
 
-- Powerfulness
+- 強靭性
 
-  It naturally supports a variety of cross-chain assets. gas-fee free and instant maker orders,  scalability to serve a large number of users.
+  様々なクロスチェーンアセットにも対応しており、ガス代やインスタントメーカー注文、多くのユーザーに対応できるスケーラビリティも備えています。
 
-### Steps
+### ステップ
 
-- Decentralized Multi-signature Organization
+- 分散型マルチシグネチャ組織
 
-  The work of a multi-signature organization is mainly to participate in asset co-management, review, and deployment of Dapp programs, governance, etc. It can unite multiple well-known teams and companies to form a decentralized multi-signature organization or issue coins to form a decentralized autonomous organization through voting. Then set a consensus threshold, for example, if 5 nodes are co-managing some assets, 3 node signatures are required to move the assets. A common setting is to require two-thirds of the nodes to sign, such as `3/5 `, `4/7` ... `171/255`.
+  マルチシグネチャ組織の仕事は、主にDappプログラムのアセット共同管理、レビュー、展開、ガバナンスなどに参加することです。複数の著名なチームや企業を束ねて分散型マルチシグネチャ組織を形成したり、暗号資産を発行して投票による分散型の自律組織を形成したりすることができます。例えば、5つのノードがある資産を共同管理する場合、資産を動かすには3つのノードの署名が必要である等の合意形成の設定などが可能です。合意形成の閾値は、`3/5`、`4/7`...`171/255`といったように、一般的にノードの3分の2を設定します。
 
-- Decentralized Exchange Development
+- 分散型取引所の開発
   
-  1. Development Environment: Mature languages such as Go, Java, PHP, and mature database systems such as MySQL, PostgreSQL, and MongoDB.
+  1. 開発環境: Go、Java、PHPなどのプログラミング言語と、MySQL、PostgreSQL、MongoDBなどのデータベースシステムを扱える必要があります。
 
-  2. Matching engine: Maker, taker orders, and order cancellations are realized through transfers, user assets are effectively isolated while transparency are improved because of transactions recorded on-chain. Nodes need to synchronize related UTXO transactions continuously. Collateral loans and borrowing operations are processed separately according to the `Memo` of the transaction. All operations need to be verified and the data must be signed by enough nodes to be recorded in the database. All operations need to initiate a Mixin mainnet multi-signature, with Memo information including operation type, amount and others, the format is as follows (recommended to use MessagePack + base64 to compress the data):
+  2. マッチング・エンジン: メーカー、テイカーの注文や注文のキャンセルは転送によって実現され、ユーザー資産は効果的に隔離され、取引はオンチェーンで記録されるため透明性が向上します。ノードは、関連するUTXOトランザクションを継続的に同期させる必要があります。担保融資と借入の操作は、トランザクションの`Memo`に従って別々に処理されます。すべての操作は検証される必要があり、データはデータベースに記録されるのに十分なノードによって署名される必要があります。また、すべての操作はMixinメインネットのマルチシグネチャを開始する必要があり、操作タイプ、金額などのMemo情報を含む、以下のようなフォーマットになっています。（データを圧縮するためにMessagePack + base64を使用することが推奨されます）
 
   ```golang
   memo = base64.StdEncoding.EncodeToString(msgpack(OrderAction{
@@ -46,21 +46,21 @@ The next-generation high-performance decentralized on-chain exchange based on th
   }))
   ```
 
-  3. Asset management: All assets are managed by the node multi-signature, and the user's maker order assets are directly saved to the multi-signature address, and taking and canceling orders require most nodes to verify the wallet to take effect.
+  3. 資産管理: すべての資産はノードのマルチシグネチャで管理され、ユーザーのメーカーオーダー資産はマルチシグネチャのアドレスに直接保存され、オーダーの取得とキャンセルはほとんどのノードでウォレットの確認が必要です。
 
-  4. Front-end development: A front-end can be developed to allow wallet users to directly transfer to the matching engine to post maker orders or take orders because it is safer without custody of assets.
+  4. フロントエンド開発: フロントエンドを開発し、ウォレットユーザーが直接マッチングエンジンに転送してメーカーオーダーを出したり、資産を預けない方が安全であるからという理由でオーダーを受けたりできるようにすることも可能です。
 
-- Security Measures
+- セキュリティ対策
 
-  1. The ability to deal with risks can be further improved through multi-signature management and cold and hot wallet isolation. Try to limit the scale of losses caused by unpredictable risks.
+  1. マルチシグネチャによる資産管理やコールドウォレットとホットウォレットの分離により、リスクへの対応力をさらに高めることができます。このような対策を行うことで、予測不可能なリスクによる損失規模を抑えることが可能です。
 
-  2. All nodes must independently review the Dapp code to reduce potential risks. Every node has a right and obligation to assets.
+  2. すべてのノードは、潜在リスクを減らすために、独立してDappコードをレビューする必要があります。また、すべてのノードには資産管理に対する権利と義務があります。
 
-  3. Node teams should keep close contact. Once a problem is found, the service can be suspended in time, the problem can be quickly fixed with new code deployed.
+  3. ノードを運営するチームは密に連絡を取り合う必要があります。問題が見つかれば、その時点でサービスを停止し、新しいコードをデプロイして迅速に問題を修正することができます。
 
-- Governance
+- ガバナンス
 
-  The decentralized multi-signature organizations determine the order of trading pairs, commission fees, and other proposals through voting.
+ 　　分散型マルチシグネチャ組織では、取引ペアの順序や手数料などの提案を投票によって決定しています。
 
 ---
-MTG reference code: https://github.com/MixinNetwork/trusted-group . To contact tech support, search for 762532 in [Mixin Messenger](https://w3c.group/c/1609251387450619) .
+MTGリファレンスコード: https://github.com/MixinNetwork/trusted-group .テクニカルサポートへのお問い合わせは、[Mixin Messenger](https://w3c.group/c/1609251387450619)でMixin ID：`762532`を検索してください。
