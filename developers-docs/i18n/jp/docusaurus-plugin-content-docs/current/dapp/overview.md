@@ -10,7 +10,7 @@ Mixin Network は分散型ネットワークですが、Mixinアプリケーシ�
 
 ## メッセンジャーボット
 
-Mixin Messengerは、エンドツーエンドの暗号化チャットやウォレット機能を提供するほか、【Telegram bots】(https://core.telegram.org/bots)や【WhatsApp Buz API】(https://www.whatsapp.com/business/api)と同様のボット機能にも対応しています。
+Mixin Messengerは、エンドツーエンドの暗号化チャットやウォレット機能を提供するほか、【Telegram bots】(https://core.telegram.org/bots) や【WhatsApp Buz API】(https://www.whatsapp.com/business/api) と同様のボット機能にも対応しています。
 
 開発者は、取引、有料コンテンツ、Eコマースなどの機能を持つ強力なボットを簡単に実装することができます。Mixin メッセンジャーで `7000101700` と検索すると、厳選された様々なボットを試すことができます。
 
