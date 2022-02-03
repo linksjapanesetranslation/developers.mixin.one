@@ -1,13 +1,13 @@
 ---
-title: Overview
+title: 概要
 sidebar_position: 10
 ---
 
-Both Mixin Core Team and community have developed SDKs for developers to use Mixin API.
+Mixinコアチームとコミュニティは、開発者がMixin APIを使用するためのSDKを開発しています。
 
-### Overview
+### 概要
 
-Mixin provides REST APIs. Developers are free to use any language familiar to develop Mixin wallets, such as Go, Java, Ruby, Node.js, PHP, C#, Javascript, Python, Swift, Koltin, etc.
+MixinはREST APIを提供します。開発者は、Go, Java, Ruby, Node.js, PHP, C#, Javascript, Python, Swift, Koltin など、Mixinウォレットの開発に馴染みのある言語を自由に使用することができます。
 
 - [Go SDK](./go)
 
@@ -19,12 +19,12 @@ Mixin provides REST APIs. Developers are free to use any language familiar to de
 
 - [Kotlin SDK](./kotlin)
 
-The above SDKs are maintained by the Mixin team or third-party active developers. For other versions of the SDK, please refer to https://github.com/awesome-mixin-network/mixin_network_sdk_resource
+上記のSDKは、Mixinチームまたはサードパーティのアクティブな開発者によってメンテナンスされています。その他のバージョンの SDK については、https://github.com/awesome-mixin-network/mixin_network_sdk_resource を参照してください。
 
 - Go
 
-  [bot-api-go-client](https://github.com/MixinNetwork/bot-api-go-client) is the SDK officially provided by Mixin. In addition to providing wallet-related API encapsulation, it also provides Mixin Messenger message related API encapsulation, see the code [blaze.go](https://github.com/MixinNetwork/bot-api-go-client/blob/master/blaze.go) for a specific implementation.
+  [bot-api-go-client](https://github.com/MixinNetwork/bot-api-go-client) は、Mixin が公式に提供している SDK です。ウォレット関連の API カプセル化のほか、Mixin Messenger メッセージ関連の API カプセル化も提供します。具体的な実装は [blaze.go](https://github.com/MixinNetwork/bot-api-go-client/blob/master/blaze.go) のコードをご参照ください。
 
 - PHP
 
-  [mixin-sdk-php](https://github.com/ExinOne/mixin-sdk-php) is provided by the ExinOne team. If you encounter any problems, you can search for 26930 in Mixin Messenger for help.
+  [mixin-sdk-php](https://github.com/ExinOne/mixin-sdk-php) はExinOneチームによって提供されています。何か問題が発生した場合は、Mixin メッセンジャーで 26930 を検索してヘルプを得ることができます。
