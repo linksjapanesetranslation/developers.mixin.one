@@ -5,15 +5,15 @@ sidebar_position: 14
 
 # PHP SDK
 
-The SDK is based on Composer，it requires PHP version 7.0 or higher to work.
+本SDKはComposerをベースにしており、動作にはPHPバージョン7.0以降が必要です。
 
-### Installation
+### インストール
 
 ```
 $ composer require exinone/mixin-sdk-php -vvv
 ```
 
-### Quick Start
+### クイックスタート
 
 ```php
 <?php
@@ -63,7 +63,7 @@ var_dump($assets);
 ?>
 ```
 
-Fo more examples, see [examples](https://github.com/ExinOne/mixin-sdk-php/tree/master/tests/Feature)。
+その他の例は、[examples](https://github.com/ExinOne/mixin-sdk-php/tree/master/tests/Feature)をご覧ください。
 
 ---
-This SDK is developed by the Exin team. To contact tech support, search for 26930 in Mixin Messenger.
+本SDKは、Exinチームによって開発されました。テクニカルサポートへのお問い合わせは、Mixin Messengerで26930を検索してください。
