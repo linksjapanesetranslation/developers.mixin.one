@@ -5,13 +5,13 @@ sidebar_position: 13
 
 # Node.js SDK
 
-### Installation
+### インストール
 
 ```shell
 npm install mixin-node-sdk --save
 ```
 
-### Quick Start
+### クイックスタート
 
 ```js
 const { Mixin } = require('mixin-node-sdk')
@@ -54,7 +54,7 @@ console.log(assets)
 
 ## FAQ
 
-If you want to query all assets, set query_assets to null.
+すべてのアセットを照会したい場合は、query_assets を null に設定してください。
 
 ---
-This SDK is developed by the Mixin team. To contact tech support, search for 30265 in Mixin Messenger.
+本SDKはMixinチームによって開発されています。テクニカルサポートへのお問い合わせは、Mixinメッセンジャーで30265を検索してください。
