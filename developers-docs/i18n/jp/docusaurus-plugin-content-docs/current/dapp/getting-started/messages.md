@@ -1,13 +1,13 @@
 ---
-title: Send and Receive Messages
+title: メッセージの送受信
 sidebar_position: 6
 ---
 
-## Sending Messages
+## メッセージの送信
 
-The sending message feature can be used to implement functions like sending announcements and replying to users. Before sending a message, you need to create a message structure.
+メッセージ送信機能を使って、お知らせの送信やユーザーへの返信などの機能を実装することができます。メッセージを送信する前に、メッセージ構造を作成する必要があります。
 
-Mixin Messenger supports [various message types](/docs/api/messages/category). A plain-text message's structure should look like this:
+Mixin Messengerは[各種メッセージタイプ](/docs/api/messages/category)をサポートします。プレーンテキストのメッセージは以下のような構造になっています：
 
 ```json
 {
@@ -23,33 +23,33 @@ Mixin Messenger supports [various message types](/docs/api/messages/category). A
 }
 ```
 
-:::tip
-The application needs to know the `user_id` of the user to send messages.
+::ヒント
+アプリケーションはメッセージを送信するために、ユーザーの「user_id」を知る必要があります。
 
-The `user_id` can be obtained in three ways: the user sends messages to the application, adds the bot as a friend, and authorize the application.
+「user_id」は、ユーザーがアプリケーションにメッセージを送る、ボットを友人として追加する、アプリケーションを承認する、の3つの方法で取得することができます。
 :::
 
-Here is an example of sending a plain-text message by using the official Golang SDK:
+ここでは、Golangの公式SDKを使ってプレーンテキストメッセージを送信する例を示します。
 
 ```go
 // @TODO an example.
 ```
 
-:::info
-Before sending a message, you need to make sure that the conversation has been created. You don’t need to create a conversation when users either take the initiative to send messages or add the current bot as a friend. However, if not, you need to call the [Creating Conversations](/docs/api/conversations/create) API to ensure that the conversation has been created.
+:::インフォ
+メッセージを送信する前に、会話が作成されていることを確認する必要があります。ユーザーからメッセージを送るか、現在のボットを友達として追加している場合は、会話を作成する必要はありません。しかし、そうでない場合は、[会話を作成](/docs/api/conversations/create) APIを呼び出して、会話が作成されたことを確認する必要があります。
 :::
 
-## Receiving Messages
+## メッセージの受信
 
 ```go
 // @TODO an example.
 ```
 
 
-:::info
-1. When the user adds the current bot as a friend, the system will automatically send a "Hello" message to the bot.
-2. User messages are only kept on the server for 7 days, and messages that expired will be discarded if the developers do nothing about them.
-3. The message sent by Websocket needs to be compressed with gzip, and the message received will be decompressed accordingly.
-4. Automatic reconnections are highly recommended for Websocket. In the case of 401, the WebSocket connection should be stopped. Note that the time should not exceed 5 minutes, which will also trigger a 401 error.
-5. The bot’s message quota is 100,000 messages per minute.
+::インフォ
+1. ユーザーが現在のボットを友達として追加すると、システムが自動的にボットに「こんにちは」メッセージを送信します。
+2. ユーザーのメッセージは7日間だけサーバーに保存され、期限切れのメッセージは開発者が何もしなければ破棄されます。
+3. Websocketで送信されたメッセージはgzipで圧縮される必要があり、受信したメッセージはそれに応じて解凍さます。
+4. Websocketでは自動再接続を強く推奨します。401の場合、WebSocketの接続を停止する必要があります。なお、5分以上経過すると401エラーが発生します。
+5. ボットのメッセージクォータは、1分あたり100,000メッセージです。
 :::
