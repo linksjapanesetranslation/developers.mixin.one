@@ -1,10 +1,10 @@
 ---
-title: Generate Authentication Token
+title: 認証用トークンの生成
 ---
 
-Accessing and manipulating user data through the APIs requires a signed authentication token in the HTTP headers.
+APIを通じてユーザーデータにアクセスし、操作するためには、HTTPヘッダーに署名された認証トークンが必要です。
 
-### Signing Authentication Token
+### 認証トークンへの署名
 
 In Go language:
 
@@ -35,13 +35,13 @@ func SignAuthenticationToken(uid, sid, privateKey, method, uri, body string) (st
 }
 ```
 
-An example of a signed authentication token:
+署名付き認証トークンの例：
 
 ```
 eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1MzMwOTY0ODUsImlhdCI6MTUyNTMyMDQ4NSwianRpIjoiMjU5NGFkNTctOWRhZC00MjRmLTg1OTUtYjE0NzI3ZTI0ZTYxIiwic2lkIjoiYzA5Y2YzMTMtN2RlZC00MjVkLWFkM2YtYTFjZTRjZmQ1ZTVlIiwic2lnIjoiODVkZDIzOGE5ODM0NzE3ZGMxM2QzODQ0ZjYzYTFmZWUxM2Q4MmQyZTZjMmVlNDRlYWM3Yzc5MGY1ZGIyNWY4OCIsInVpZCI6Ijg5ZTBiZGVlLWMzNTUtNDdmMi05NDVhLWJlNDhiZTg3NTYwNiJ9.PYg6Cx5grs0flJe862R3VLEWKyTZPcXOGYF9RouztgR_mi3kleIzJt4vCwUZI9F7QrHBFMtTc3_wG_ymnnjsmnm0pBdoON4I-RxeaztIlyc1Ey9lLFe6_ARRUBXo_15ZORilS1hRdMREd84eQOLlO0ChieBPY0tSSiVqTaFZt3Q
 ```
 
-### Calling APIs
+### APIの呼び出し
 
 ```go
 const (
@@ -86,5 +86,5 @@ func main() {
 
 ```
 
-- The signed authorization token cannot be reused, please regenerate it every time you request.
-- `X-Request-Id` is used to identify the current request,
+- 署名された認証トークンは再利用できませんので、リクエストの都度再生成してください。
+- `X-Request-Id`は、現在のリクエストを識別するために使用されます。
