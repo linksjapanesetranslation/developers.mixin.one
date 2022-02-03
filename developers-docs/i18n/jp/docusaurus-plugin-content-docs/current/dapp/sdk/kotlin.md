@@ -5,19 +5,19 @@ sidebar_position: 12
 
 # Kotlin SDK
 
-### How To Use
+### 使い方
 
-Importing [Kotlin SDK](https://github.com/MixinNetwork/bot-api-kotlin-client).
+[Kotlin SDK](https://github.com/MixinNetwork/bot-api-kotlin-client)をインポート
 
-Add the dependency
-Get from [Mixin Dashboard](https://developers.mixin.one/dashboard).
+依存関係を追加する
+ [Mixin Dashboard](https://developers.mixin.one/dashboard)から取得します。
 ```
 dependencies {
     implementation 'com.github.MixinNetwork:bot-api-kotlin-client:v0.1.0'
 }
 ```
 
-### Configuration
+### コンフィギュレーション
 
 ```
 object Config {
@@ -29,7 +29,7 @@ object Config {
 }
 ```
 
-### Quick Start
+### クイックスタート
 
 ```kotlin
     val key = getEdDSAPrivateKeyFromString(Config.privateKey)
@@ -79,7 +79,7 @@ object Config {
         println("Get assets fail")
     }
 ```
-For more examples, check SDK [Sample](https://github.com/MixinNetwork/bot-api-kotlin-client/blob/main/samples/src/main/java/jvmMain/kotlin/Sample.kt)。
+その他のサンプルは、SDK [サンプル](https://github.com/MixinNetwork/bot-api-kotlin-client/blob/main/samples/src/main/java/jvmMain/kotlin/Sample.kt)をご覧ください。
 
 ---
-This SDK is developed by the Mixin team. To contact tech support, search for 26832, 31911 in Mixin Messenger.
+このSDKはMixinチームによって開発されています。テクニカルサポートへのお問い合わせは、Mixinメッセンジャーで26832, 31911を検索してください。
