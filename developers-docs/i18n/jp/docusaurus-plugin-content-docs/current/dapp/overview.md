@@ -4,17 +4,17 @@ title: Mixin Applications
 sidebar_position: 1
 ---
 
-Mixin Application is the application that built on top of Mixin. It is a kind of application that can be used to create, manage, and transfer assets on Mixin Network and can send and receive messages from Mixin message service.
+Mixinアプリケーションは、Mixin上に構築されるアプリケーションです。Mixinネットワーク上でアセットを作成、管理、転送したり、Mixinメッセージサービスからメッセージを送受信することができるアプリケーションの一種です。
 
-Although Mixin Network is a decentralized network, Mixin Application could be centralized or decentralized.
+Mixin Network は分散型ネットワークですが、Mixinアプリケーションは中央集権型でも分散型でもかまいません。
 
-## Messenger Bot
+## メッセンジャーボット
 
-In addition to providing end-to-end encrypted chat and wallet functions, Mixin Messenger also supports bot functions similar to [Telegram bots](https://core.telegram.org/bots) and [WhatsApp Buz API](https://www.whatsapp.com/business/api).
+Mixin Messengerは、エンドツーエンドの暗号化チャットやウォレット機能を提供するほか、【Telegram bots】(https://core.telegram.org/bots)や【WhatsApp Buz API】(https://www.whatsapp.com/business/api)と同様のボット機能にも対応しています。
 
-Developers can easily implement powerful bots with functions such as transactions, paid content, and e-commerce. You can search for `7000101700` in Mixin Messenger to try a variety of selected bots.
+開発者は、取引、有料コンテンツ、Eコマースなどの機能を持つ強力なボットを簡単に実装することができます。Mixin メッセンジャーで `7000101700` と検索すると、厳選された様々なボットを試すことができます。
 
-By default, every Mixin application that be created at Developers Dashboard will be a Mixin Messenger bot.
+デフォルトでは、Developers Dashboard で作成されるすべての Mixin アプリケーションが Mixin Messenger ボットとなります。
 
 ### Features
 
