@@ -5,7 +5,7 @@ sidebar_position: 15
 
 # Ruby SDK
 
-### Installation
+### インストール
 
 ```shell
 gem install mixin_bot
@@ -22,7 +22,7 @@ and
 bundle install
 ```
 
-### Quick Start
+### クイックスタート
 
 ```ruby
 # Initialize params
@@ -71,7 +71,7 @@ assets = user_mixin_api.read_assets
 puts assets
 ```
 
-Fo more examples, check [spec](https://github.com/an-lee/mixin_bot/blob/master/spec/mixin_bot/api/user_spec.rb)。
+その他の例は、[spec](https://github.com/an-lee/mixin_bot/blob/master/spec/mixin_bot/api/user_spec.rb)をご覧ください。
 
 ---
-This SDK is developed by an independent developer [an-lee](https://github.com/an-lee). If you have any question, you can search for 1051445 in Mixin Messenger to contact the author for help.
+本SDKは、独立した開発者[an-lee](https://github.com/an-lee)によって開発されました。もし何か質問があれば、Mixin Messenger で 1051445 を検索して作者にコンタクトしてください。
