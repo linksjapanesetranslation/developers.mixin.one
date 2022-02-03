@@ -16,41 +16,41 @@ Mixin Messengerは、エンドツーエンドの暗号化チャットやウォ�
 
 デフォルトでは、Developers Dashboard で作成されるすべての Mixin アプリケーションが Mixin Messenger ボットとなります。
 
-### Features
+### 機能
 
-- **Production-ready**:
-  Given the authorization, the bots can obtain the user's basic information, asset list, transfer records, contact list, and other data. Developers can use the data to develop products and services.
-- **Open**:
-  You can put your bots online for your users without asking anyone's permission.
-- **Fair**:
-  There is no official bot market, independent developers or teams need to promote bots by themselves, and users who have a good experience will put your bots on the top of the homepage to give your bots first-level entrance!
+- **プロダクションレディ**:
+  認証を受けると、ボットはユーザーの基本情報、資産リスト、送金記録、連絡先リストなどのデータを取得することができます。開発者は、そのデータを使って製品やサービスを開発することができます。
+- **オープン**:
+  誰の許可も得ることなく、ユーザーのためにボットをオンラインにすることが可能です。
+- **フェア**:
+  公式のボットマーケットはなく、独立した開発者やチームが自分でボットを宣伝する必要があり、良い体験をしたユーザーはあなたのボットをトップページに載せて、ボットにより良い入り口を与えます。
 
-### Getting Started
+### 始め
 
-- [Official Tutorial](getting-started/create-dapp): a tutorial on how to create a Messenger bot.
-- [Understanding the Message Mechanism](guide/message-loop): a guide on how to send and receive messages.
+- [オフィシャルチュートリアル](getting-started/create-dapp): Messengerボットの作成方法に関するチュートリアルです。
+- [メッセージの仕組みを知る](guide/message-loop): メッセージの送受信方法についてのガイドです。
 
 ## Mixin API
 
-Develop with distributed systems are always complex, therefore, interact with Kernel and Domain is a hard. To simplify the development, Mixin core team provide the Wallet APIs to developers.
+分散システムの開発は常に複雑であり、Kernelやドメインとのやり取りは大変です。そこで、Mixin のコアチームは Wallet API を開発者に提供し、開発を簡素化しました。
 
-With the APIs, developers can easily unleash the power of Mixin Network with their dApps. Stand-alone products such as decentralized wallets and decentralized on-chain exchanges can be quickly developed.
+この API を使うことで、開発者は簡単に Mixin Network のパワーを彼らの dApps で発揮することができます。分散型ウォレットや分散型オンチェーン取引所のようなスタンドアロン製品を迅速に開発することができます。
 
-### Features
+### 機能
 
-- **Security**:
-  Security is guaranteed by open source PoS decentralized network, TEE hardware, and full nodes supervised by tens of thousands of light nodes to prevent evil.
-- **High Concurrency**:
-  One million TPS, suitability for large-scale commercial scenarios, and performance close to that of traditional centralized servers.
-- **Free** Zero fee transactions, competency in micropayment and everyday payment scenarios.
-- **Instant Transfer** It only takes 300 milliseconds to complete the verification and signature of a transaction without transaction rollback or double spending.
-- **Versatility** Supports for 32 chains, including BTC, ETH, EOS, XMR, etc., and more than 100 thousand tokens.
-- **Easy to use** 6-digit password for safe management of the wallet, easy to remember, and easy to use.
-- **Multi-signature** Support for co-management of multi-signature assets among up to 255 people. Suitability for teams and families who want to co-own a large amount of an asset, and B2C or C2C platforms who want to co-manage the fund to prevent the platform from embezzling the fund.
-- **Transaction Privacy** Except for the parties themselves, even full nodes do not know who are the parties in a transaction, there is no way to know the identities of the parties in a transaction from the transaction itself.
-- **Developer Friendly** REST API makes it easy for developers to use any language they want to quickly implement products and services.
+- **セキュリティ**:
+  セキュリティは、オープンソースのPoS分散型ネットワーク、TEEハードウェア、数万台のライトノードで監視されるフルノードによって保証され、悪事を防止します。
+- **高い同時実行性**:
+  100万TPS、大規模商用シナリオへの適合性、従来の集中型サーバーに近い性能。
+- **フリー** 手数料ゼロの取引、マイクロペイメントや日常の決済シーンでの能力。
+- **インスタントトランスファー** トランザクションのロールバックや二重支出なしに、トランザクションの確認と署名が完了するまでには、わずか300ミリ秒しかかかりません。
+- **汎用性** BTC、ETH、EOS、XMRなど32チェーンに対応し、10万以上のトークンをサポートします。
+- **使いやすさ** 6桁のパスワードでウォレットを安全に管理、覚えやすく、使いやすい。
+- **マルチシグネチャ** 最大255人までのマルチシグネチャ資産共同管理に対応。多額の資産を共同所有したいチームや家族、プラットフォームが資金を横領しないように共同管理したいB2CやC2Cのプラットフォームなどに適しています。
+- **トランザクションプライバシー** 当事者自身を除いては、たとえフルノードが取引の当事者を知らないとしても、取引自体から取引当事者の身元を知る方法はありません。
+- **デベロッパーフレンドリー** REST APIを使えば、開発者は好きな言語を使って、製品やサービスを素早く実装することができます。
 
-### Getting Started
+### はじめよう
 
-- [Official Tutorial](getting-started/create-dapp): a tutorial on how to create a Messenger bot(bot is a kind of Mixin App).
-- [Sync Snapshots](guide/sync-snapshots): a guide on how to sync snapshots from Mixin Network.
+- [公式チュートリアル](getting-started/create-dapp): Messengerボットの作成方法に関するチュートリアルです（ボットはMixinアプリの一種です）。
+- [スナップショットの同期](guide/sync-snapshots): Mixin Networkからスナップショットを同期する方法についてのガイドです。
