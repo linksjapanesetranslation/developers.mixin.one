@@ -5,13 +5,13 @@ sidebar_position: 11
 
 # Go SDK
 
-### Installation
+### インストール
 
 ```
 go get github.com/MixinNetwork/bot-api-go-client
 ```
 
-### Quick Start
+### クイックスタート
 
 ```golang
 package main
@@ -92,7 +92,7 @@ func main() {
 
 ```
 
-Fo more examples, see [examples](https://github.com/MixinNetwork/bot-api-go-client/blob/master/examples/wallet.go)。
+その他の例は、[examples](https://github.com/MixinNetwork/bot-api-go-client/blob/master/examples/wallet.go)をご覧ください。
 
 ---
-This SDK is developed by the Mixin team. To contact tech support, search for 493230, 31911 in Mixin Messenger. The Go SDK https://github.com/fox-one/mixin-sdk-go provided by the Fox team is also very good, providing more complete code examples.
+本SDKはMixinチームによって開発されています。テクニカルサポートに連絡するには、Mixin Messenger で 493230, 31911 を検索してください。Foxチームが提供しているGo SDK https://github.com/fox-one/mixin-sdk-go も非常に良く、より完全なコード例を提供しています。
