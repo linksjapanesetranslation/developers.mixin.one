@@ -1,44 +1,44 @@
 ---
-title: Stablecoin
+title: ステーブルコイン
 sidebar_position: 13
 ---
 
-# Stablecoin
+# ステーブルコイン
 
-Stable coins have a wide range of uses. In addition to serving as a safe-haven asset, there is a great demand for them at times of short-term loans, cross-border remittances, and fiat currency deposits. Using MTG to issue, host stablecoins and develop supporting Dapps is secure, stable, and highly efficient.
+ステーブルコインは、幅広い用途で利用されています。安定資産としての役割に加え、短期融資、国境を越えた送金、法定通貨の預金などのユースケースで大きな需要があります。MTGでステーブルコインの発行、保管、対応するDappsの開発を行うことで、安全、安定、かつ効率的な運用が可能になります。
 
-### Advantages
+### 優位性
 
-- Decentralization with Security
+- 分散化とセキュリティ
   
-  Protected by Mixin mainnet, assets under custody are well protected through the cold and hot wallet isolation and co-managed by up to 255 party multi-signature. Dapps can be deployed on 255 node servers.
+  預かり資産はMixinメインネットによって保護され、さらにコールドウォレットとホットウォレットの分離と最大255人のマルチシグネチャによる共同管理によって、十分に保護されます。Dappsは255ノードのサーバーにデプロイすることができます。
 
-- Stability 
+- 安定性
   
-  Stablecoin Dapps can be developed using more stable and mature languages, such as Go, Java, PHP, etc. The exchange service is more stable and smooth, without network congestion and high gas problems. 
+  ステーブルコインのDappsは、Go、Java、PHPなどの完成度が高い言語を使って開発することができます。取引所関連サービスは、ネットワークの混雑やガス代の高騰などの問題がなく、より安定的でスムーズです。
 
 
-- High performance
+- 高性能
   
-  Stablecoin Dapps can be deployed on high-performance node servers to provide users with low-latency and efficient collateral loan and clearing services.
+  ステーブルコインDappsは、高性能なノードサーバーにデプロイすることで、低遅延で効率的な担保融資・清算サービスをユーザーに提供することが可能です。
 
-- Powerfulness
+- 強靭性
 
-  It naturally supports a variety of cross-chain assets. Transactions are free and instant with scalability to serve a large number of users.
+  様々なクロスチェーン資産に対応しています。取引は無料かつ高速で、多数のユーザーに対応できるスケーラビリティを備えています。
 
-### Steps
+### ステップ
 
-- Decentralized Multi-signature Organization
+- 分散型マルチシグネチャ組織
 
-  The work of a multi-signature organization is mainly to participate in asset co-management, review, and deployment of Dapp programs, governance, etc. It can unite multiple well-known teams and companies to form a decentralized multi-signature organization or issue coins to form a decentralized autonomous organization through voting. Then set a consensus threshold, for example, if 5 nodes are co-managing some assets, 3 node signatures are required to move the assets. A common setting is to require two-thirds of the nodes to sign, such as `3/5 `, `4/7` ... `171/255`.
+  マルチシグネチャ組織の仕事は、主にDappプログラムのアセット共同管理、レビュー、展開、ガバナンスなどに参加することです。複数の著名なチームや企業を束ねて分散型マルチシグネチャ組織を形成したり、暗号資産を発行して投票による分散型の自律組織を形成したりすることができます。例えば、5つのノードがある資産を共同管理する場合、資産を動かすには3つのノードの署名が必要である等の合意形成の設定などが可能です。合意形成の閾値は、`3/5`、`4/7`...`171/255`といったように、一般的にノードの3分の2を設定します。
 
-- Generate Stablecoins
+- ステーブルコインの発行
 
-  Stable coins can be issued based on platforms that support coin issuance such as ERC20, TRC20, EOS, etc. The coin issuance contract can be set with a fixed upper limit or not, and then deposit into the Mixin network, and transfer to the asset co-management account.
+  ERC20、TRC20、EOSなど、トークン発行に対応したプラットフォームに基づいてステーブルコインを発行することができます。発行契約は、発行上限を固定の有無を設定し、Mixinネットワークに入金し、資産共同管理口座に送金することが可能です。
 
-- Dapp Development
+- Dappの開発
   
-  The core team uses mature languages like Go, Java or PHP to develop functions, such as automated stablecoin borrowing, redemptation, clearing and so on. Dapp data will be recorded independantly in node database. Nodes need to continuously synchronize related UTXO transactions, write those with valid signatures into databases and sign those without. All operations need to initiate a Mixin mainnet multi-signature, with Memo information including initiator, operation type, amount and other information, the format is as follows (recommended to use MessagePack + base64 to compress the data):
+  コアチームは、Go、Java、PHPなどの言語を使用して、ステーブルコインの自動借用、償還、清算などの機能を開発します。Dappのデータは、ノードのデータベースに独立して記録されます。ノードは、関連するUTXOトランザクションを継続的に同期させ、有効な署名があるものはデータベースに書き込み、有効な署名がないものには署名する必要があります。すべての操作は、Mixinメインネットマルチ署名を開始する必要があり、作成者、操作タイプ、金額、その他の情報を含むメモ情報は、以下の形式です。（データを圧縮するためにMessagePack + base64を使うことを推奨します）
  
   ```golang
   memo = base64.StdEncoding.EncodeToString(msgpack(OrderAction{
@@ -49,33 +49,33 @@ Stable coins have a wide range of uses. In addition to serving as a safe-haven a
   }))
   ```
 
-  User collateral assets go directly into the multi-signature account, every withdrawal needs to be verified and signed by most nodes.
+  ユーザー担保資産は直接マルチシグネチャアカウントに入り、出金のたびにほとんどのノードで確認と署名が必要です。
   
-  The program will be deployed to each of the node servers once development is finished. All development and operation cost is foreseeable, since being gas-fee free means no extra unpredictable cost.
+  開発終了後、各ノードサーバーにプログラムをデプロイする予定です。ガス代がかからないので、開発・運用にかかる費用はすべて予測可能です。
 
-- Security Measures
+- セキュリティ対策
 
-  1. The ability to deal with risks can be further improved through multi-signature management and cold and hot wallet isolation. Try to limit the scale of losses caused by unpredictable risks.
+  1. マルチシグネチャによる資産管理やコールドウォレットとホットウォレットの分離により、リスクへの対応力をさらに高めることができます。このような対策を行うことで、予測不可能なリスクによる損失規模を抑えることが可能です。
 
-  2. All nodes must independently review the Dapp code to reduce potential risks. Every node has a right and obligation to assets.
+  2. すべてのノードは、潜在リスクを減らすために、独立してDappコードをレビューする必要があります。また、すべてのノードには資産管理に対する権利と義務があります。
 
-  3. Node teams should keep close contact. Once a problem is found, the service can be suspended in time, the problem can be quickly fixed with new code deployed.
+  3. ノードを運営するチームは密に連絡を取り合う必要があります。問題が見つかれば、その時点でサービスを停止し、新しいコードをデプロイして迅速に問題を修正することができます。
 
-- Governance
+- ガバナンス
 
-  The decentralized multi-signature organizations determine types of collaterals, commission fees, clearing schemes and other proposals through voting.
+  分散型マルチシグネチャ組織では、担保の種類、手数料、清算スキームなどの提案を投票によって決定します。
 
-### Example
+### 利用例
 
-The stablecoin Pando USD jointly issued by Mixin Core, Biyin, BigONE, Fox, and Exin has been launched recently. Five teams jointly manage assets and Dapp programs.
+Mixin Core、Biyin、BIGONE、Fox、Exinが共同で発行するステーブルコイン「Pando USD」が先日ローンチされました。5つのチームが共同でアセットとDappプログラムを管理しています。
 
-- **Name** Pando USD (pUSD)
-- **Limit** 1 trillion
-- **Issuance Network** Ethereum ERC20
+- **ステーブルコイン名** Pando USD (pUSD)
+- **発行上限** 1兆
+- **発行元ネットワーク** Ethereum ERC20
 - **Circulation** 7,500,000 pUSD (2021/01/01)
-- **Collaterral** BTC
-- **Collateralization** Over-collateralization (200%)
-- **Number Of Nodes** 5
+- **担保の種類** BTC
+- **担保設定** 過剰担保設定 (200%)
+- **ノード数** 5
 
 ---
-MTG reference code: https://github.com/MixinNetwork/trusted-group . To contact tech support, search for 762532 in [Mixin Messenger](https://w3c.group/c/1609251387450619).
+MTGリファレンスコード: https://github.com/MixinNetwork/trusted-group .テクニカルサポートへのお問い合わせは、[Mixin Messenger](https://w3c.group/c/1609251387450619)でMixin ID：` 762532`を検索して下さい。
