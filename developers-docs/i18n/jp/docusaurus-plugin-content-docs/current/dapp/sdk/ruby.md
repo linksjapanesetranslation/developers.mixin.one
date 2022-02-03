@@ -11,12 +11,12 @@ sidebar_position: 15
 gem install mixin_bot
 ```
 
-Or, add the following to gemfile:
+または、gemfileに以下を追加してください。
 
 ```ruby
 gem 'mixin_bot'
 ```
-and 
+及び
 
 ```
 bundle install
