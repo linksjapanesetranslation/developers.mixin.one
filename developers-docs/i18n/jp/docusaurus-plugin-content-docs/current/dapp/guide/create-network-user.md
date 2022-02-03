@@ -1,11 +1,11 @@
 ---
-title: Create Network User
+title: ネットワークユーザーの作成
 sidebar_position: 2
 ---
 
-The network user is a user that created by the private key of the application user. The keystore of a network user is created by the application and then registered to the Mixin Network.
+ネットワークユーザーは、アプリケーションユーザーの秘密鍵によって作成されるユーザーです。ネットワークユーザのキーストアは、アプリケーションによって作成され、Mixin Networkに登録されます。
 
-The following example uses Go SDK to generate the wallet user code:
+次の例では、Go SDKを使用してウォレットユーザーのコードを生成します。
 
 ```go
 import (
@@ -47,4 +47,4 @@ func main() {
 
 `clientId`, `sessionId`, `privateKey` are obtained from the keystore of the current wallet application.
 
-For SDKs in other languages, please refer to [document](/docs/resources/sdk).
+その他の言語のSDKについては、[document](/docs/resources/sdk)を参照してください。
