@@ -15,94 +15,93 @@ MTGはシャーディング技術の中でも最も効率の良い手段です�
 
 - セキュリティ
 
-  Mixin mainnet Kernel PoS is combined with application consensus, achieving double security.
+  MixinメインネットのカーネルPoSとアプリケーションのコンセンサスを組み合わせ、二重のセキュリティを実現します。
   
 
 - 堅牢性
 
-  Each node will strictly review the program code, rather than simply deploy and execute it. If program vulnerabilities are found, nodes will quickly respond and repair, and the cold and hot isolation of asset storage further enhances the security.
+  各ノードは、単にプログラムコードをデプロイして実行するのではなく、コードを厳正に審査します。プログラムの脆弱性が発見された場合、ノードは迅速に対応・修復し、コールドウォレットとホットウォレットの資産管理の分離により、セキュリティはさらに強化されます。
   
 - マルチチェーン対応
 
-  It supports all public chains supported by Mixin, cross-chain asset exchange can be achieved easily.
-
+  Mixinがサポートする全てのパブリックチェーンに対応しており、クロスチェーンでの資産交換を容易に実現できます。
 
 - 高性能
 
-  It supports high concurrency and can be applied to commercial scenarios for a large number of users on a large scale.
+  高い並行処理をサポートし、大規模で多数のユーザーを対象とした商用シナリオに適用できます。
 
 - トランザクションの高速処理
 
-  Transfers are free and instant, which meets the requirement of commercial scenarios such as micropayments and everyday payment.
+  マイクロペイメントや日常的な支払いなど、商業的な場面での要求に応え、無料かつ即時に送金することができます。
 
 - スケーラビリティ
 
-  Being infinitely scalable, each MTG is an independent decentralized network that does not consume the mainnet system resources.
+  無限に拡張可能で、各MTGは独立した分散型ネットワークであり、メインネットのシステムリソースを消費することはありません。
 
 - 互換性
 
-  Compatible with all blockchain networks and traditional centralized Internet technologies and ecosystem. For example, the Ethereum virtual machine can be deployed directly after simple modification of the MTG consensus. All Ethereum smart contracts can be used on Mixin, which is faster. There are no transfer fees.
+  すべてのブロックチェーンネットワークと従来の中央集権的なインターネット技術およびエコシステムに対応することが可能です。例えば、Ethereumバーチャルマシン（EVM）は、MTGコンセンサスを少し修正した後、直接デプロイすることができます。すべてのEthereumスマートコントラクトは、より高速なMixin上で使用することができます。さらに送金手数料は無料です。
 
 - 柔軟性
 
-   Flexible development language: Developers can freely use any language (Go, Java, PHP, Rust, etc.) to implement MTG.
+   様々な開発言語に対応：開発者は、MTGを実装するために任意の言語（Go、Java、PHP、Rustなど）を自由に使用することができます。
   
-   Flexible data storage: You can use blockchain technology to store data, or you can directly use traditional databases such as MySQL, PostgreSQL, MongoDB, SQL Server, etc. to store data. The scheme is similar to distributed databases but stored separately by different nodes.
+   様々なデータベースに対応：ブロックチェーン技術を使ってデータを保存することもできますし、MySQL、PostgreSQL、MongoDB、SQL Serverなどの従来のデータベースを直接使ってデータを保存することもできます。分散型データベースと似たような仕組みですが、異なるノードによって別々に保存されます。
   
-   Flexible number of nodes: MTG supports hierarchical consensus, each node in the upper layer corresponds to 255 nodes in the lower layer, the top-level consensus supports up to 255 nodes, the second-layer consensus supports up to 255 * 255 nodes, and so on.
+   ノード数の柔軟性：MTGは階層的なコンセンサスをサポートしており、上位層の各ノードは下位層の255ノードに対応し、最上位のコンセンサスは最大255ノード、2層目のコンセンサスは最大255*255ノード、といった具合にサポートされます。
 
 ### ユースケース
 
-Using the MTG to develop decentralized applications is very simple. It can be designed and developed like centralized projects. The only difference is that the data needs to be asynchronously waited for confirmation and signature by other nodes before being stored in the database. After the development is completed, we need to deploy the code to each node. It a good choice if you want to upgrade traditional projects to blockchain projects.
+MTGを利用することで分散型アプリケーションを簡単に開発することが可能です。中央集権型のプロジェクトと同じように設計・開発することができます。唯一の違いは、データをデータベースに格納する前に、他のノードによる確認と署名を非同期に待機する必要があることです。また開発完了後、各ノードにコードをデプロイする必要があります。
 
 - [パブリックチェーン](./chains)
 
-  Using the MTG solution to develop a PoS public chain can save the time and cost of modules such as consensus, network, and transactions. The new chain obtains Mixin mainnet security, high performance, free transfer within seconds, multi-chain support, and many other features while maintaining the independence of accounting. It is a parallel chain of Mixin.
+  MTGを利用してPoSパブリックチェーンを開発することで、コンセンサス、ネットワーク、トランザクションなどのモジュールにかかる時間やコストを削減することができます。新しいチェーンは、会計の独立性を維持しながら、Mixinメインネットセキュリティ、高性能、数秒以内の無料送金、マルチチェーン対応など多くの機能を手に入れることができます。これはMixinのパラレルチェーンです。
 
 - [ステーブルコイン](./stablecoin)
 
-  Stable coins have a wide range of uses. In addition to serving as a safe-haven asset, there is a great demand in use cases like short-term loans, cross-border remittances, and fiat currency deposits. Using the MTG solution to issue, custody stable coins, and develop supporting Dapps is secure, stable, and efficient.
+  ステーブルコインは、幅広い用途で利用されています。安定資産としての役割に加え、短期融資、国境を越えた送金、法定通貨の預金などのユースケースで大きな需要があります。MTGでステーブルコインの発行、保管、対応するDappsの開発を行うことで、安全、安定、かつ効率的な運用が可能になります。
 
 - [自動マーケットメイカー（AMM）](./amm)
 
-  Compared with the traditional order book transactions, automated market makers makes the process automated and free of human interventions. Developing automated market makers with MTG is more efficient than Ethereum-based Uniswap, and has higher security, stability and fault tolerance, etc.
+  従来のオーダーブック取引と比較して、自動マーケットメーカーは、プロセスを自動化し、人間の介入を不要にします。MTGによる自動マーケットメーカーの開発は、イーサリアムベースのユニスワップよりも効率的で、高い安全性、安定性、耐障害性などを備えています。
 
 - [モーゲージローン](./lend)
 
-  MTG-based decentralized mortgage loans are characterized by high performance, openness, data transparency, currencies richness, gas fee free and instant borrow and repay, etc.
+  MTGをベースとした分散型モーゲージローンは、高いパフォーマンス、オープン性、データの透明性、通貨の豊富さ、ガス代無料、即時借入・返済などの特徴を備えています。
 
 - [分散型取引所](./exchange)
 
-  MTG-based decentralized exchanges are characterized by high performance, asset isolation (separation of maker order assets and wallet assets), openness and transparent data on the chain, currencies richness, free of transfer fee for maker and taker orders, and autonomous currency listings.
+  MTGベースの分散型取引所は、高いパフォーマンス、資産管理の分離（メーカーオーダーの資産とウォレットの資産の分離）、チェーン上のデータの開放性と透明性、通貨の豊富さ、メーカーオーダーとテイカーオーダーの送金手数料無料、通貨の自律的なリストアップなどの特徴を備えています。
 
 - オラクル
 
-   By collecting data on and off chain, the decentralized oracle service based on MTG collects can provide low-latency and cost-effective data services for other products in Mixin ecosystem.
+   チェーン内外のデータを収集することで、MTGに基づく分散型オラクルサービスは、Mixinエコシステムの他の製品に低遅延かつ効率の良いデータサービスを提供することができます。
 
 - Atomic Swap
 
-  Atomic swap can be implemented with MTG. Assets are safely locked in the node's multi-signature account, and the assets are either successfully exchanged or returned.
+  Atomic SwapはMTGで実装することができます。資産はノードのマルチシグネチャアカウントに安全にロックされ、資産は正常に交換されるか、返却されます。
 
-- Coin Mixing Technology
+- Coin Mixingテクノロジー
 
-  Mixin transfers have a high degree of privacy. Nodes cannot know the identities of specific transaction parties. If you want to further enhance the privacy of both parties of the transaction, MTG coin mixing technology is your friend.
+  Mixinの送受信は高度なプライバシーを確保しています。ノードは特定の取引当事者の身元を知ることはできません。取引当事者双方のプライバシーをさらに高めたい場合は、MTGのCoin Mixing技術をご利用ください。
 
 ### Q&A
 
-- How to identify whether it is a Dapp based on MTG?
+- MTGをベースにしたDappかどうかを見極めるにはどうすれば良いですか？
 
-  If transferring money to Dapp through Mixin Messenger is not a multi-signature transaction, then the Dapp must be centralized.
+  Mixin Messengerを使ったDappへの送金がマルチシグネチャトランザクションでない場合、Dappは中央集権的でなければなりません。
 
   ![Mutisig Trasaction](./overview-mutisig-transaction.png)
 
-- Are there any MTG-based products?
+- MTGを使ったプロダクトはありますか？
 
-  Search for 7000103117 in Mixin Messenger to try the MTG version of 4swap.
+  Mixin MessengerでMixin ID：`7000103117`と検索すると、MTG版4swapを試すことができます。
 
 
-- How to find a trustworthy node team?
+- 信頼できるノードチームを見つけるにはどうすれば良いですか？
 
- Projects can attract third-party teams to participate through regular currency issuance and elections. They can also directly contact well-known teams such as exchanges, wallets, blockchain browsers, smart contract teams, and others to participate. A professional MTG service provider will be on Mixin in the future, providing services such as one-click deployment.
+ プロジェクトは、通常のトークン発行や投票を通じて、第三者のチームを参加させることができます。また、取引所、ウォレット、ブロックチェーンブラウザ、スマートコントラクトチームなど、有名なチームに直接コンタクトして参加することも可能です。今後、MTGの専門サービスプロバイダーがMixinに登場し、ワンクリックでデプロイできるなどのサービスを提供する予定です。
 
 ---
-MTG provides extremely high theoretical and practical value for the popularization and large-scale application of blockchain. This is a very mature technical solution. Compared with other smart contract platforms, it has high performance, flexibility, and other advantages. Welcome to join the construction of MTG.
+MTGは、ブロックチェーンの普及と大規模な応用のために、極めて高い理論的・実用的価値を提供します。これは非常に成熟した技術的ソリューションです。他のスマートコントラクトプラットフォームと比較して、高いパフォーマンス、柔軟性、その他の優位性を持っています。MTGの構築に参加することを歓迎します。
