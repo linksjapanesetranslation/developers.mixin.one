@@ -1,20 +1,21 @@
 ---
-title: Read Information
+title: 情報の読み込み
 ---
 
-In the [previous article](./oauth), I introduced the OAuth2 flow and how to use it to get an access token. In this article, I will show you how to read information of users.
+[前回記事](./oauth)では、OAuth2のフローと、それを使ってアクセストークンを取得する方法について紹介しました。今回は、ユーザーの情報を読み取る方法を紹介します。
 
-From now on, SDK will be introduced in the following articles. The Mixin team and the community provide various SDKs for developers to use. You can find the SDKs in the [SDK](/docs/resources/sdk) page.
 
-## Read User's Profile
+今後、SDKについては、以下の記事で紹介していきます。Mixinチームとコミュニティは、開発者が利用できるようにさまざまなSDKを提供しています。SDK は [SDK](/docs/resources/sdk) のページで確認することができます。
 
-:::tip
-To obtain the basic personal information of a user, the `PROFILE:READ` permission is required.
+## ユーザープロファイルの読み込み
+
+:::ヒント
+ユーザーの基本個人情報を取得するには、「PROFILE:READ」パーミッションが必要です。
 :::
 
-We can read the user's profile by using the [`/me`](/docs/api/users/profile) endpoint. `/me` is an authenticated endpoint, so we need to obtain an access token first and put it in the HTTP Headers.
+ユーザーのプロファイルを読み取るには、[`/me`](/docs/api/users/profile)エンドポイントを使用します。`/me`は認証されたエンドポイントなので、最初にアクセストークンを取得してHTTPヘッダーに記述する必要があります。
 
-Let's send a request:
+リクエストを送信しましょう
 
 ```bash
 GET -H "Authorization: Bearer $ACCESS_TOKEN" https://api.mixin.one/me
@@ -31,19 +32,19 @@ GET -H "Authorization: Bearer $ACCESS_TOKEN" https://api.mixin.one/me
 }
 ```
 
-:::info
-The `user_id` field is an unique id for each "Account" or "User" in the entire Mixin Network.
+:::インフォ
+「user_id」フィールドは、Mixin Network全体の各アカウントやユーザーに対して一意なIDを指定します。
 
-Additionally, if the user is a Mixin Messenger user, you can send messages to them by using [`POST /messages`](/docs/api/messages/send) with the `user_id` field.
+さらに、そのユーザーがMixin Messengerのユーザーであれば、[`POST /messages`](/docs/api/messages/send) で「user_id」フィールドを指定してメッセージを送信することができます。
 :::
 
-## Read User's Assets
+## ユーザー資産の読み込み
 
-:::tip
-To obtain the asset balance of a user, the `ASSETS:READ` permission is required.
+:::ヒント
+ユーザーの資産残高を取得するには、「ASSETS:READ」パーミッションが必要です。
 :::
 
-Calling `GET /assets` returns assets with a balance greater than 0. When you calls this API with a token which owned by a new user with zero balance, an empty list will be returned.
+`GET /assets` を呼び出すと、残高が0以上のアセットを返信します。残高が0の新規ユーザーが所有するトークンでこのAPIを呼び出すと、空のリストが返信されます。
 
 ```bash
 GET -H "Authorization: Bearer $ACCESS_TOKEN" https://api.mixin.one/assets
@@ -53,19 +54,20 @@ import RespAssets from '../../_partials/_resp.assets.md'
 
 <RespAssets />
 
-:::info
-The `asset_id` field is an unique id for each asset in the entire Mixin Network.
+:::インフォ
+ `asset_id` フィールドは、Mixin Network 全体における各アセットのユニークなIDです。
 
-It can be obtained from https://mixin.one/snapshots by searching for asset code such as `btc`. You can also deposit the asset into the Mixin Messenger wallet and talk to the bot `7000103061`, then search for and copy asset information.
+https://mixin.one/snapshots から `btc` などのアセットコードを検索して入手することができます。また、Mixin Messenger のウォレットにアセットを入金し、ボット `7000103061` に呼びかけ、アセット情報を検索してコピーすることも可能です。
 :::
 
-## Read Application's Assets
+## アプリケーションの資産の読み取り
 
-The Mixin Application is a special type of user. It also has a wallet just like a normal user. You can inspect the assets of the application by visiting "Developers Dashboard - Choosing any app - Clicking the `Wallet` tab".
+Mixinアプリケーションは、特殊なユーザーです。また、通常のユーザーと同じようにウォレットを持ちます。デベロッパーダッシュボード - appを選択 - `Wallet` tabをクリック "にアクセスすることで、アプリケーションのアセットを検査することができます。
 
-You can also read the assets programmatically by calling the [`/assets`](/docs/api/assets/assets) with the application's access token. The algorithm for generating access token can be found [here](../guide/generate-jwt-token), but you can also use the [SDK](/docs/resources/sdk) to simplify the process.
 
-Here is the example of generating token and reading assets by using the official Go SDK:
+また、アプリケーションのアクセストークンを使って [`/アセット`](/docs/api/assets/assets) を呼び出すことで、プログラム的にアセットを読み込むことができます。アクセストークンを生成するアルゴリズムは[こちら](. /guide/generate-jwt-token) ですが、処理を簡単にするために [SDK](/docs/resources/sdk) を使用することも可能です。
+
+ここでは、公式Go SDKを使用して、トークンの生成とアセットの読み取りを行う例を示します。
 
 ```go
 import "github.com/MixinNetwork/bot-api-go-client"
