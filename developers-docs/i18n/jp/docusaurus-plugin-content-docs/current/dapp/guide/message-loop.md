@@ -1,10 +1,10 @@
 ---
-title: Handle Message Loop
+title: メッセージループの処理
 ---
 
-## Handle Websocket
+## ウェブソケットの取り扱い
 
-Mixin's message service uses websocket to distribute messages. The following Golang code snippet shows how to handle the websocket connection:
+Mixinのメッセージサービスでは、websocketを使ってメッセージを配信しています。次のGolangコード・スニペットはwebsocket接続を処理する方法を示しています。
 
 ```go
 func ConnectMixinBlaze(uid, sid, key string) (*websocket.Conn, error) {
@@ -26,11 +26,11 @@ func ConnectMixinBlaze(uid, sid, key string) (*websocket.Conn, error) {
 }
 ```
 
-Of course, you can use the SDK to simplify the process.
+もちろん、SDKを利用することで作業を簡略化することも可能です。
 
-## Receiving Messages
+## メッセージの受信
 
-After the WebSocket is connected, the LIST_PENDING_MESSAGES message must be sent first to receive the pending message:
+WebSocket 接続後、保留中のメッセージを受信するためには、まず LIST_PENDING_MESSAGES メッセージを送信する必要があります。
 
 ```json
 {
@@ -39,7 +39,7 @@ After the WebSocket is connected, the LIST_PENDING_MESSAGES message must be sent
 }
 ```
 
-The data format:
+データフォーマット:
 
 ```json
 // On success:
@@ -72,11 +72,11 @@ The data format:
 }
 ```
 
-For more message types, please refer to the document [Message Type](../../api/messages/category).
+その他のメッセージタイプについては、ドキュメント[メッセージタイプ](../../api/messages/category)を参照してください。
 
-## Message Status
+## メッセージステータス
 
-When the WebSocket connection is successful and the bot has received the message and processed it, the bot needs to send the message status to the Messenger server so that the server knows that the message has been received, otherwise the message will be pushed repeatedly. Message status can be sent in batches to improve performance:
+WebSocket接続が成功し、ボットがメッセージを受信して処理した場合、ボットはメッセージの状態をMessengerサーバーに送信し、サーバーがメッセージを受信したことを検知する必要があります。そうしないと、メッセージが繰り返しプッシュされることになります。メッセージステータスは、パフォーマンスを向上させるために、バッチで送信することができます。
 
 ```json
 [
@@ -88,4 +88,4 @@ When the WebSocket connection is successful and the bot has received the message
 ]
 ```
 
-For details, please refer to the [Sending Status In Batches](../../api/messages/send) document.
+詳しくは、ドキュメント「ステータスの一括送信」(../../api/messages/send)を参照してください。
