@@ -1,54 +1,54 @@
 ---
-title: Multi-Signature Guide
+title: マルチシグネチャガイド
 sidebar_position: 1
 ---
 
-There is a complete 2/3 multi-signature demo: https://github.com/MixinNetwork/trusted-group, the online test bot id: 7000101488.
+完全な2/3マルチシグネチャーのデモがあります: https://github.com/MixinNetwork/trusted-group, オンラインテストボットのID: 7000101488。
 
-A scenario where the multi-signature could be used: There is an asset that belongs to a team of three people, A, B, and C. Two of them need to agree to use this asset. In this case, a 2/3 multi-signature is appropriate.
+マルチシグネチャが使われるシナリオ：A、B、Cの3人のチームが所有するアセットがあります。この場合、2/3のマルチシグネチャが適切です。
 
-A, B, C need to be three different bots or users of Mixin Network (private keys and PINs required).
+A、B、Cは3つの異なるボットまたはXixinネットワークのユーザーである必要があります（プライベートキーとPINが必要）。
 
-## 1. Transfer an asset to the common account of A, B, and C. POST /transactions
+## 1. A、B、C の共通アカウントに資産を移動する POST /transactions
 
-Transfer an asset to a multi-signature account, refer to the following document for more info.
+マルチシグネチャーの口座に資産を移管する場合、詳しくは以下の資料をご参照ください。
 https://developers.mixin.one/docs/api/multisigs/request
 
-## 2. Get your own utxo /multisigs/outputs
+## 2. 独自のutxo /multisigs/outputsを取得します。
 
-It should be noted that in a transaction, threshold and members must map to the same members, and the number of signatures (2 of 2/3)
-API document: https://developers.mixin.one/docs/api/multisigs/outputs
+注意すべきは、トランザクションにおいて、thresholdとmembersは同じメンバーにマッピングする必要があり、署名の数（2/3 の 2）です。
+APIドキュメント：https://developers.mixin.one/docs/api/multisigs/outputs
 
-We need to continuously request the api server, get the latest utxo and save it.
+継続的にapiサーバーにリクエストし、最新のutxoを取得し、保存する必要があります。
 
-## 3. The withdrawal of assets, as mentioned above, requires at least two signatures to complete, but the process is the same.
+## 3. 資産の出金は、前述の通り、完了までに少なくとも2つのサインが必要ですが、その手続きは同じです。
 
-There are 3 different operations related to multi-signature，which are signing, cancelling, and unlocking. A request needs to be constructed before every operation. API document: https://developers.mixin.one/docs/api/multisigs/request
+マルチシグネチャに関連する操作は，署名，取消し，ロック解除の3種類です。それぞれの操作の前に、リクエストを作成する必要があります。APIドキュメント： https://developers.mixin.one/docs/api/multisigs/request
 
-The Goal: A needs to withdraw 100 CNB from a common account.
+目的：Aは共通口座から100CNBを出金する必要がある。
 
-1. A sends a request (POST /multisigs/requests).
-2. A signs, POST /multisigs/requests/:id/sign，in which :id is request id.
-3. B, C need to do something similar. Take C as a example, in the outputs C receives，state is now signed, C takes the tx signed by A to repeat step 1 and 2, that is constructing the request and signing.
-4. Parse signed tx, and then check whether the number of signers is 2, if >= 2, send the transaction to mainnet.
-5. A now gets the 100 CNB, transaction complete.
+1. Aはリクエスト(POST /multisigs/requests)を送信する。
+2. Aは署名する。POST /multisigs/requests/:id/sign, in :idはリクエストIDである。
+3. BとCも同じようなことをする必要があります。Cが受け取る出金では，状態が署名されているので，CはAによって署名されたtxを受け取って，ステップ1と2を繰り返します。
+4. 署名済みtxを解析し、署名者の数が2人であるかどうかを確認し、2人以上であれば、トランザクションをメインネットに送信します。
+5. Aは100CNBを獲得し、取引は完了します。
 
-Code for signing refund after a payment: https://github.com/MixinNetwork/trusted-group/blob/master/sample/models/payment.go#L164
+支払い後の払い戻しに署名するためのコード https://github.com/MixinNetwork/trusted-group/blob/master/sample/models/payment.go#L164
 
-During the process of contructing the transaction, A's GhostKeys will be used(one-time key), which can be retrieved at https://developers.mixin.one/docs/api/network/outputs .
+取引構築の過程で、AのGhostKeys（ワンタイムキー）が使用されます。このキーは、https://developers.mixin.one/docs/api/network/outputs で取得できます。
 
-## 4. Cancelling The Transaction
+## 4. トランザクションの取り消し
 
-1. Construct the request, the process is the same as contructing a transaction.
-2. Send the cancel request, POST /multisigs/requests/:id/cancel，:id is request id. Note, only tx in the unspent state can be cancelled.
+1. リクエストを構築するプロセスは、トランザクションを構築する時のものと同じです。
+2. キャンセルリクエストを送信します。POST /multisigs/requests/:id/cancel，:id はリクエストIDです。注意：未使用状態のTXのみキャンセル可能です。
 
-## 5. Unlocking The Transaction
+## 5. トランザクションのアンロック
 
-When the tx is signed but not sent, cacelling the tx means to unlock it, the process is a lot like cancelling.
+Txが署名されているが送信されていない場合、取り消しはTxのロックを解除することを意味し、そのプロセスは取り消しとよく似ている。
 
-1. Construct the request, the process is the same as contructing a transaction.
-2. Send the request, POST /multisigs/requests/:id/unlock，:id is request id, Note that only signed tx can be cancelled.
+1. リクエストを構築する処理はトランザクションを構築するのと同じで ある。
+2. リクエストを送信する。POST /multisigs/requests/:id/unlock，:id はリクエストID。
 
-## Conclusion
+## 結論
 
-In most cases, only step 1, 2, and 3 are relavent. First deposit, then sign the related outputs and send the tx to mainnet to spend.
+多くの場合、ステップ1、2、3が重要になります。まず入金し、次に関連する出力に署名し、txをメインネットに送信して使用します。
