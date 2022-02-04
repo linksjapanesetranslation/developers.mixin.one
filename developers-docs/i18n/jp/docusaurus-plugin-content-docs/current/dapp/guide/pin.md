@@ -1,19 +1,19 @@
 ---
-title: Update PIN
+title: PINのアップデート
 sidebar_position: 4
 ---
 
-A 6-digit PIN is required when a user is trying to transfer assets, the code functions pretty much like a private key, not retrievable if lost.
+6桁の暗証番号は、ユーザーが資産を譲渡する際に必要となるもので、秘密鍵のように機能し、紛失しても復元することはできません。
 
-:::caution
-Developers must be very cautious when transferring funds or changing PINs.
+:::注意
+開発者は、送金や暗証番号の変更に十分な注意を払う必要があります。
 
-Note that PINs cannot be recovered or reset! The wrong transfers cannot be undone! The production environment and the test environment must be separated and fully tested.
+暗証番号の復旧やリセットはできませんのでご注意ください。間違った送金は元に戻せません。本番環境とテスト環境は分離し、十分にテストする必要があります。
 :::
 
-## Encrypting PIN
+## PINの暗号化
 
-In order to transmit the PIN securely, the PIN must be encrypted. In Go language:
+PINを安全に送信するためには、PINを暗号化する必要があります。In Go language：
 
 ```go
 func EncryptPIN(ctx context.Context, pin, pinToken, sessionId, privateKey string, iterator uint64) (string, error) {
@@ -58,9 +58,9 @@ func EncryptPIN(ctx context.Context, pin, pinToken, sessionId, privateKey string
 }
 ```
 
-For SDKs in other languages, please refer to [Document](/docs/resources/sdk).
+その他の言語のSDKについては、[ドキュメント](/docs/resources/sdk)をご参照ください。
 
-## Setting PIN
+## PINの設定
 
 ```go
 const (
@@ -89,12 +89,11 @@ func main() {
 }
 ```
 
-:::info
+:::インフォ
 
-- The parameter `iterator` must be incremental and greater than 0. It is generally recommended to use the current system Nano time, or you can choose a number by yourself, and increment it with each call.
-- The encrypted PIN can only be used once, and it needs to be generated twice when changing the password and cannot be reused.
-- There is a time lock for PIN errors. If you have failed 5 times a day, do not try again, even the PIN is correct after 5 times, an error will be returned. Repeating more times will cause a longer lock time. It is recommended that users write down the tried PIN and try again the next day.
-- Once a PIN is lost, it can never be retrieved. It is recommended that the developer let each user enter it regularly to help memorize it. During the initial setting, make sure to let the user enter it more than 3 times and remind the user that it cannot be retrieved if lost
-- For asset security, it is recommended to remind users not to set PINs that are too simple or common combinations, such as `123456`, `111222`.
-
+- パラメータ `iterator` はインクリメンタルで 0 より大きい値でなければなりません。 一般に、現在のシステムナノ時間を使用することが推奨されますが、自分で数字を選んで、呼び出しのたびにインクリメントすることもできます。
+- 暗号化された暗証番号は1回しか使用できず、パスワード変更時に2回生成する必要があり、再利用はできません。
+- PINのエラーにはタイムロックがかかっています。1日に5回失敗した場合、5回目以降はPINが正しくてもエラーが返されますので、再試行しないでください。それ以上の回数を繰り返すと、ロック時間が長くなります。試行したPINをメモしておき、翌日に再試行することをお勧めします。
+- PINは一度紛失すると、二度と元に戻せません。開発者は、各ユーザーに定期的に入力させ、暗証番号を覚えさせることをお勧めします。初期設定時に3回以上入力させ、紛失すると取り返しがつかないことを念押しする。
+- 資産保全の観点から、「123456」や「111222」のような単純すぎる暗証番号やよくある組み合わせを設定しないよう、ユーザーに注意喚起することをお勧めします。
 :::
