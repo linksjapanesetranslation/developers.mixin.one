@@ -1,5 +1,5 @@
 ---
-title: Sync Snapshots
+title: スナップショットの同期
 ---
 
 WIP
