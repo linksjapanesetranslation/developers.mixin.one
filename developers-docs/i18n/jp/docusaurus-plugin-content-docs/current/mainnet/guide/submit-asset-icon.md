@@ -1,35 +1,35 @@
 ---
-title: Submitting Asset Icons
+title: アセットアイコンの提出
 sidebar_position: 17
 ---
 
-# Submitting Asset Icons
+# アセットアイコンの提出
 
-All ERC-20, TRC-10, TRC-20, and EOS tokens can be used directly after depositing into the Mixin network, but some coins do not have an icon. Developers can contact the Mixin team to submit the icon. If you want to do this, please follow the following steps.
+ERC-20、TRC-10、TRC-20、EOSの全てのトークンはMixinネットワークに入金後、直接使用することができますが、一部のコインにはアイコンがありません。開発者はMixinチームに連絡し、アイコンを提出することができます。その場合は、以下の手順でお願いします。
 
-### Token Icon Format
+### トークンアイコンのフォーマット
   
-- 520x520 pixels, png.
-- Must be round and the background cannot be transparent or white.
-- Clear and great brand recognition.
+- 520x520 ピクセル、 png。
+- 円形である必要があります。背景が透明、白のものは不可です。
+- 明確で確かなブランド認知度
 
-### Getting Asset ID
+### アセットIDの取得
 
-- Deposit the tokens to the Mixin wallet first, find the deposit record from the wallet and copy the `transaction ID`.
-- Open the Mixin block explorer https://mixin.one/snapshots, enter the transaction ID and click search.
-- Copy the link of the token name at the bottom of the transfer details and intercept the string at the end of the link, for example, if you get `https://mixin.one/snapshots/c94ac88f-4671-3976-b60a-09064f1811e8`, then `c94ac88f-4671-3976-b60a-09064f1811e8` is the asset ID.
+- まずトークンをMixinウォレットに入金し、ウォレットから入金記録を探して、トランザクションIDをコピーします。
+- Mixinブロックエクスプローラー https://mixin.one/snapshots を開き、トランザクション ID を入力し、検索をクリックします。
+- 送金詳細の下部にあるトークン名のリンクをコピーし、リンクの末尾にある文字列を傍受します。例えば、`https://mixin.one/snapshots/c94ac88f-4671-3976-b60a-09064f1811e8`と出た場合、`c94ac88f-4671-3976-b60a-09064f1811e8`がアセットIDとなります。
 
-### Submitting Icon
+### アイコンの提出
 
-- Log in to your GitHub account and clone the code of project `asset-profile`:
+- GitHubのアカウントにログインし、プロジェクト`asset-profile`のコードをクローンします:
 
    `git clone git@github.com:MixinNetwork/asset-profile.git`
 
-- Switch to the `asset-profile` directory and create a token branch
+- `asset-profile` ディレクトリに移動し、トークンブランチを作成します。
 
-- Documents to be submitted
+- 提出すべきドキュメント
   
-  Create a new directory in the `assets` directory, the name of the directory is the current asset ID, copy the icon to the directory and rename it to "icon.png", and then create a new `index.json` The file format is as follows :
+  `assets` ディレクトリに新しいディレクトリを作成します。ディレクトリ名は現在のアセットIDです。アイコンをディレクトリにコピーし、"icon.png"に名前を変更し、新しいindex.jsonを作成します。ファイル形式は以下の通りです:
 
   ```
   {
@@ -39,14 +39,14 @@ All ERC-20, TRC-10, TRC-20, and EOS tokens can be used directly after depositing
   }
   ```
 
-  `chain_id` is the public chain ID, if it is an Ethereum ERC 20 token, always set it to `43d61dcd-e413-450d-80b8-101d5e903357`, and if TRON TRC-10 or TRC-20 token, always `25dabac5-056a-48ff -b9f9-f67395dc407c`, for EOS tokens `6cfe566e-4aad-470b-8c9a-2fd35b49c68d`, for others, refer to [document](../concepts/chain).
+  `chain_id` はパブリックチェーンのIDで、Ethereum ERC 20 tokenであれば常に`43d61dcd-e413-450d-80b8-101d5e903357`に設定し、TRON TRC-10もしくはTRC-20 tokenならば常に`25dabac5-056a-48ff -b9f9-f67395dc407c`、EOS tokensならば`6cfe566e-4aad-470b-8c9a-2fd35b49c68d`、ほかのトークンであれば[document](../concepts/chain)を参照してください。
 
-  `cmc_id` If your asset is not included by coinmarketcap, just set an empty string here.
+  `cmc_id` あなたのアセットがcoinmarketcapに含まれていない場合、ここは空欄にしてください。
 
-- Application
+- 申請
 
-  Submit the prepared icon and configuration file together with a brief introduction, and then click `Create pull request`. The Mixin development team will conduct a pre-review and then pass it to the nodes to review. If there is no problem, the icon will be deployed.
+  用意したアイコンと設定ファイルに簡単な紹介を添えて、 `Create pull request` をクリックします。Mixin開発チームが事前審査を行った後、ノードに渡して審査してもらいます。問題がなければ、そのアイコンはデプロイされます。
 
 ---
-For more instructions, please refer to https://github.com/MixinNetwork/asset-profile project homepage introduction, and also refer to other the earlier submission [Record](https://github.com/MixinNetwork/asset-profile/commit/37c50161cbb0d9cdfd2387b1adb5837a601260a6 ).
+詳細は、https://github.com/MixinNetwork/asset-profile プロジェクトのホームページ紹介をご覧ください、またそれ以前に投稿された [Record](https://github.com/MixinNetwork/asset-profile/commit/37c50161cbb0d9cdfd2387b1adb5837a601260a6 )も参照ください。
 
