@@ -1,13 +1,13 @@
 ---
-title: Deploying Full Node
+title: フルノードのデプロイ
 sidebar_position: 15
 ---
 
-# Deploying Full Node
+# フルノードのデプロイ
 
-Mixin Network is a decentralized network based on PoS consensus. Full nodes use XIN as collateral. The XIN collateralized each year is 2% of the circulation. The first year is 10,000 XIN, and the second year 11,000 XIN, and so on. As long as there are enough mortgage tokens, anyone can apply and anonymously join the Mixin mainnet without any permission. The application steps:
+Mixin Networkは、PoSコンセンサスに基づく分散型ネットワークです。フルノードはXINを担保として使用します。毎年担保にするXINは流通量の2％です。1年目は10,000XIN、2年目は11,000XINというようになります。十分な担保トークンがあるば、申請することで、承認なく誰でも匿名でMixinのメインネットに参加することができます。申請の手順は以下の通りです。
 
-### Generating Mainnet Private Keys and Addresses
+### メインネットの秘密鍵とアドレスの生成
 
 ```
 $ git clone https://github.com/MixinNetwork/mixin.git
@@ -15,7 +15,7 @@ $ cd mixin
 $ go build
 ```
 
-After successful compilation, use `./mixin createaddress -public` to generate two private keys and addresses, one is used to group and sign mainnet transactions called signer, and the other is used to receive mining rewards called payee. Please properly back up and keep the address, view key, and spend key.
+コンパイルに成功したら、./mixin createaddress -public で2つの秘密鍵とアドレスを生成します。1つはsignerというメインネット取引のグループ化と署名に使用され、もう1つはpayeeというマイニング報酬の受け取りに使用されます。アドレス、ビューキー、スペンドキーはきちんとバックアップして保管しておいてください
 
 ```
 $ ./mixin createaddress -public
@@ -26,23 +26,23 @@ spend key: c0619ce9c6fad9d2b6f7f4c0e676aed8f4d07b422e5fa55fee6154961954be0c
 ```
 
 
-The address that initiates to join the mainnet can be a signer, payee or some other address. There is no requirement, but the collateral will be returned to the payee address when the node expires or exits the mainnet.
+メインネットへの参加を開始するアドレスは、signer、payee、その他のアドレスのいずれでもかまいません。要件はありませんが、ノードの有効期限が切れたり、メインネットから退出したりすると、担保は受取人のアドレスに返却されます。
 
 `$$\color{red}{ Note: The signer must be replaced with a new key each year. There is no such requirement for the payee key.}$$`
 
 
-### Transfering Collateral Tokens
+### 担保となるトークンの受け渡し
 
-Currently, it is not possible to transfer tokens directly to the mainnet address through Mixin Messenger, and the tokens need to take a transfer through a bot.
+現在、Mixin Messengerで直接メインネットアドレスにトークンを送金することはできず、ボットを介してトークンの送金を行う必要があります。
 
-- Download [Mixin Messenger](https://mixin-www.zeromesh.net/messenger), and open [Dashboard](//developer.mixin.one/dashboard) to scan the QR code to log in.
+- [Mixin Messenger](https://mixin-www.zeromesh.net/messenger)をダウンロードし、[Dashboard](//developer.mixin.one/dashboard)を開き、QRコードをスキャンしてログインしてください。
 
-- Click "New Application" on the left and follow the prompts to create a bot, switch to "Key" tab and click "App Session" to download the Keystore, switch to "Wallet" tab, enter the information in the Keystore to enable the wallet.
+- 左側の "New Application"をクリックし、プロンプトに従ってボットを作成します。"Key "タブに切り替え、"App Session "をクリックしてキーストアをダウンロードし、"Wallet "タブに切り替え、キーストアに情報を入力してウォレットを有効にしてください。
 
-- Open Mixin Messenger homepage, on top of which search for the Mixin ID of the bot you just created, transfer the collateral tokens to the robot, and refresh the wallet interface to see it.
+- Mixinメッセンジャーのホームページを開き、その上で先ほど作成したボットのMixin IDを検索し、担保トークンをロボットに転送します。その後、ウォレットのインターフェイスを更新して送金を確認してください。
 
 
-### Depositing Collateral Tokens To Mainnet Address
+### メインネットアドレスへの担保トークンの預け入れ
 
 There are three ways to deposit the tokens to the mainnet address. It is recommended to use CNB to test first.
 
