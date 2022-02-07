@@ -1,33 +1,33 @@
 ---
-title: MTG Development Guide
+title: MTG開発ガイド
 ---
 
-[mtg](https://developers.mixin.one/document/mainnet/mtg/overview)  is a set of smart contract solutions provided by mixin, which realizes the decentralized management of assets by allowing multiple independent nodes to jointly maintain a multi-signature wallet.
+[mtg](https://developers.mixin.one/document/mainnet/mtg/overview)  は、Mixinが提供するスマートコントラクトソリューション群であり、独立した複数のノードが共同でマルチシグネチャウォレットを維持することで、資産の分散管理を実現するものです。
 
-The core points of mtg development can be summarized as follows:
+mtg開発の核となるポイントをまとめると、以下のようになります:
 
 :::info
-Under the premise of ensuring independence, all nodes always keep the same in the choice of transfer and consumption of utxo.
+独立性を確保する前提により、すべてのノードがutxoの転送と消費の選択を常に同じに保ちます。
 :::
 
-## Sync utxo
+## utxoの同期
 
 
-Mixin provides api [GET /multisigs/outputs](https://developers.mixin.one/document/wallet/api/multisigs/outputs) to get all utxo updates in a multi-signature Group, the utso list is sorted in ascending order by utxo's **updated_at**.Because every time the utxo state changes, **updated_at** will be updated, which means that the result of ```GET /multisigs/outputs``` is not idempotent. Even if the same ```offset``` parameter is used, calling this api at different times will result in different utxo lists.
+Mixinは、マルチシグネチャグループのすべてのuxtoの更新を取得するAPI[GET /multisigs/outputs](https://developers.mixin.one/document/wallet/api/multisigs/outputs) を提供しています。utxoのリストは、utxoの**updated_at**で昇順に並べられます。utxo の状態が変わるたびに **updated_at** が更新されるので、```GET /multisigs/outputs```はべき乗ではないことになります。同じ ```offset``` パラメータを使用していても、異なる時刻にこの API を呼び出すと、異なる utxo リストになります。
 
-In order for the nodes in the multi-signature group to get the utxo list in the same order, the utxo can be divided into two groups ```[pending, commited]```. The utxo obtained through ```/multisigs/outputs```  is put into the ```pending```  group first, until the number of utxo returned by ```/multisigs/outputs```  is less than **limit** (it has been synchronized to the latest state), and then transfer all utxo in the ```pending```  group to the  ```commited```  group in ascending order of ```(created_at, transaction_hash, output_index)``` .
+マルチシグネチャグループのノードが同じ順番でutxoリストを取得できるように、utxoは2つのグループ ```[pending, commited]``` に分けることができます。まず ```/multisigs/outputs``` から取得した utxo を ```pending``` グループに入れ、 ```/multisigs/outputs``` が返す utxo の数が **limit** (最新の状態に同期された) 以下になるまで保留し、 ```pending``` グループ内の utxo を ```(created_at, transaction_hash, output_index)``` 順に ```commited``` に移します。
 
-Implementation can refer to [pando/syncer](https://github.com/fox-one/pando/blob/main/worker/syncer/syncer.go)
+実装は [pando/syncer](https://github.com/fox-one/pando/blob/main/worker/syncer/syncer.go) を参照してください。
 
 :::tip
-Unlike snapshot, utxo has three states  `unspent -> signed -> spent`.
+スナップショットとは異なり、utxoには`unspent -> signed -> spent`の３つ状態があります。
 :::
 
-## Processing utxo
+## utxoの処理
 
-Similar to the sequential processing of snapshots in ordinary dapp development, the mtg program also processes the utxo in the  ```commited```  group in sequence.
+通常のdapp開発におけるスナップショットの順次処理と同様に、mtgプログラムも ```commited``` グループ内のutxoを順次処理します。
 
-### Chart
+### チャート
 
 | snapshot (amount > 0) | utxo | description|
 |---|----|-----|
@@ -37,43 +37,45 @@ Similar to the sequential processing of snapshots in ordinary dapp development, 
 | asset_id | asset_id  |Currency|
 | amount | amount  |Number of transfers|
 
-The processing of Snapshot and utxo is basically the same, that is, according to the transfer memo processing business logic to generate external transfers.For example, in 4swap, the user pays pUSD to purchase BTC. If the purchase is successful, it needs to transfer the BTC to the user. If the purchase fails, it needs to refund USDT to the user.
+Snapshotとutxoの処理は基本的に同じで、転送メモ処理のビジネスロジックに従って外部転送を生成します。例えば、4swapでは、ユーザーがpUSDを支払ってBTCを購入するとします。 購入が成功した場合、BTCをユーザーに送金する必要があります。購入が失敗した場合、ユーザーにUSDTを返金する必要があります。
 
-## Process transfer
+## 転送処理
 
-Multi-sign-out transfer needs to initiate a [Multisig Request](https://developers.mixin.one/document/wallet/api/multisigs/request).The same  ```raw```  parameter will return the same Multisig Request, so that all nodes can verify and sign the same transfer.When the number of signatures meets the  ```threshold``` , a ```Raw Transaction``` containing enough signatures will be obtained, and then it will be submitted to the main network node to complete the transfer.
+マルチサインアウト転送を行うには、[Multisig Request](https://developers.mixin.one/document/wallet/api/multisigs/request)を起動する必要があります。同じ ```raw``` パラメータは同じマルチシグリクエストを返し、すべてのノードが同じ転送を検証して署名できるようにします。署名の数が ```threshold``` に達すると、十分な署名の入った ```Raw Transaction``` を取得し、メインネットワークノードに送信して転送を完了させることができます。
 
-Implementation can refer to[pando/assigner](https://github.com/fox-one/pando/blob/main/worker/assigner/assigner.go) 、 [pando/cashier](https://github.com/fox-one/pando/blob/main/worker/cashier/cashier.go) and [pando/spentsync](https://github.com/fox-one/pando/blob/main/worker/spentsync/spentsync.go)
+実装は[pando/assigner](https://github.com/fox-one/pando/blob/main/worker/assigner/assigner.go)、[pando/cashier](https://github.com/fox-one/pando/blob/main/worker/cashier/cashier.go)、[pando/spentsync](https://github.com/fox-one/pando/blob/main/worker/spentsync/spentsync.go)を参照することができます。
 
-### How to choose utxo
+### utxoの選び方
 
 In the ```commited utxo``` group, select the least utxo with the same asset_id and the sum of amount greater than or equal to transfer.amount in order.Because the number of utxo consumed at one time is limited, if utxo is too fragmented, it needs to be merged first, that is, transfer the first n utxo combined consumption to oneself, n suggestion 32.
+```commited utxo```グループで、同じ asset_id と金額の合計が transfer.mount 以上である最小の utxo を順に選択します。一度に消費するutxoの数が限られているので、utxoがあまりにも断片的であれば、それは最初にマージする必要があります、つまり、自分自身に最初のn個のutxoを結合し転送します。nには32がサジェストされます。
 
-The used utxo needs to be marked as used. Note that this status is separate from the spent status of utxo. The former is local status and the latter is remote status.For example, after a utxo is signed and submitted by other nodes, the status becomes spent, but because the progress is slow and has not been used by itself, it is still unused.Then when choosing utxo, you need to choose from the utxo whose local status is unspent.
+使用済みのutxoは、usedとマークする必要があります。このステータスは、utxoのspentステータスとは別であることに注意してください。usedはローカルステータス、spentはリモートステータスです。例えば、あるutxoが他のノードによって署名され提出された後、ステータスはspentになりますが、処理が遅く、それ自身では使用されていないため、まだunusedの状態です。この場合、utxoを選ぶ際には、ローカルステータスがunspentのutxoから選択する必要があります。
 
-### Which node to submit Raw Transaction to
+### Rawトランザクションの送信先ノード
 
 The proxy api provided by mixin can randomly submit Raw Transaction to any mainnet node, but in order to ensure that the submission is truly successful, after submission, you need to use the transaction hash to read the same node several times to ensure that the transaction is read and Snapshot is generated, otherwise change to another node and continue to submit.Therefore, it is not recommended to directly use this set of APIs provided by mixin, but to configure some nodes by yourself, submit and confirm point-to-point.
+mixinが提供するproxy apiは、任意のメインネットノードに対してランダムにRaw Transactionを投入することができますが、本当に投入が成功したかどうかを確認するためには、投入後にトランザクションハッシュを使って同じノードを何度か読み込んでトランザクションが読み込まれてSnapshotが生成されているかどうか確かめる必要があります、さもなければ別のノードに変更して投入を継続する必要があります。したがって、mixinが提供するこのAPI群を直接使うことはお勧めせず、自分でいくつかのノードを設定して投入と確認をpoint-to-pointで行うことをお勧めします
 
-### Send snapshot card
+### スナップショットカードの送信
 
-Because the user will not receive the transfer card in the multi-signature transfer, in order to optimize the user experience, the node will use the  ```AppCard```  to send a card to the user after the transfer is completed to simulate the arrival message. In addition, because the user will receive the transfer after having sufficient node signatures and submitting the mainnet successfully, the node should send a message to the user after the status of the consumed uxto becomes ```spent```.The card action is  ```mixin://snapshots?trace={trace_id}```, trace_id is generated by the consumed utxo transaction_hash and output_index.
-Refer to [pando/notifier](https://github.com/fox-one/pando/blob/main/notifier/utils.go#L15).
+マルチシグネチャ転送では、ユーザは転送カードを受け取らないため、ユーザ体験を最適化するために、ノードは転送完了後に ```AppCard``` を使用してユーザにカードを送信し、到着メッセージをシミュレートすることにします。また、ユーザーは十分なノード署名をもらい、メインネットを正常に送信した後に転送を受け取るため、ノードは消費したutxoのステータスがspentになった後にユーザーにメッセージを送る必要があります。カードアクションは ```mixin://snapshots?trace={trace_id}``` で、trace_idは消費したutxo transaction_hash と output_index で生成されています。
+ [pando/notifier](https://github.com/fox-one/pando/blob/main/notifier/utils.go#L15)を参照してください。
 
-## Others
+## その他
 
-### How to modify business parameters
+### ビジネスパラメーターの変更方法
 
-The business parameters must be modified by transfer, so that all nodes can be modified in the same state to be consistent. In order to avoid the problem of centralized governance, a node voting mechanism can be introduced, that is, anyone can transfer money to initiate a proposal, and the node administrators will vote, and the modification will be implemented when enough votes are collected.
+ビジネス・パラメーターは転送によって変更する必要があり、すべてのノードが同じ状態で変更できるようにすることで一貫性を持たせることができます。中央集権的なガバナンスの問題を回避するために、ノード投票機構を導入することができる。つまり、誰でも送金して提案を開始することができ、ノード管理者が投票し、十分な投票が集まれば修正が実施されることになります。
 
 :::info
-For example, the handling fee rate of 4swap trading pairs must be uniformly modified by all nodes to maintain consistency
+例えば、4swap取引ペアの取扱手数料率は、整合性を保つために全ノードが一律に変更する必要があります。
 :::
 
-### How to perform scheduled tasks
+### スケジュールされたタスクの実行方法
 
-Transfer the trigger logic of the timing task to outside of mtg. When the timing task is triggered, the node is notified by transfer, so that all nodes can perform this task in the same state.
+タイミングタスクのトリガーロジックをmtgの外部に転送する。タイミングタスクがトリガされると、転送によってノードに通知されるため、すべてのノードが同じ状態でこのタスクを実行できる。
 
 :::info
-For example, when the 4swap injection liquidity timeout, if two injections are not completed within 10 minutes, the user will be refunded
+例えば、4swapの流動性インジェクションタイムアウト時に、10分以内に2回のインジェクションが完了しなかった場合、ユーザーに返金されます。
 :::
